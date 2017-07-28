@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Codewars_BuildPalindrome
@@ -66,7 +67,7 @@ namespace Codewars_BuildPalindrome
         {
             if (JudgeLeftRightString(input))
                 return input;
-            for (int i = 0; i < input.Length; i++)
+            for (int i = 1; i < input.Length; i++)
             {
                 var partCharArray = input.Substring(0, i).ToCharArray();
                 Array.Reverse(partCharArray);
@@ -79,14 +80,9 @@ namespace Codewars_BuildPalindrome
         }
         private static bool JudgeLeftRightString(string input)
         {
-            var leftString = input.Substring(0, input.Length / 2);
-            var rightString = input.Length % 2 == 0
-                ? input.Substring(input.Length / 2, input.Length / 2)
-                : input.Substring(input.Length / 2 + 1, input.Length / 2);
-            var rightCharArray = rightString.ToCharArray();
-            Array.Reverse(rightCharArray);
-            rightString = new string(rightCharArray);
-            if (leftString.Equals(rightString))
+            var reverseCharArray = input.ToCharArray();
+            Array.Reverse(reverseCharArray);
+            if (new string(reverseCharArray).Equals(input))
             {
                 return true;
             }
