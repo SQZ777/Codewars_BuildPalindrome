@@ -15,6 +15,17 @@ namespace Codewars_BuildPalindrome
             var expected = "abcba";
             Assert.AreEqual(expected,actual);
         }
+
+        [TestMethod]
+        public void Input_abcd_Should_Be_abcdcba()
+        {
+            var kata = new Kata();
+            var input = "abcd";
+            var actual = kata.BuildPalindrome(input);
+            var expected = "abcdcba";
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 
     public class Kata
