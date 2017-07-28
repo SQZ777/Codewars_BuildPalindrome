@@ -43,11 +43,15 @@ namespace Codewars_BuildPalindrome
         }
 
         [TestMethod]
-        public void Input_accbacbcabbcca_Should_Be_acbca()
+        public void Input_accbbacb_Should_Be_accbbacbcabbcca()
         {
             BuildPalindromeResult("accbbacbcabbcca", "accbbacb");
         }
-
+        [TestMethod]
+        public void Input_abcdc_Should_Be_abcdcba()
+        {
+            BuildPalindromeResult("abcdcba", "abcdc");
+        }
         private static void BuildPalindromeResult(string expected, string input)
         {
             var kata = new Kata();
@@ -62,22 +66,17 @@ namespace Codewars_BuildPalindrome
         {
             if (JudgeLeftRightString(input))
                 return input;
-            var length = input.Length - 1;
-            for (int i = 0; i < input.Length / 2; i += 2)
+            for (int i = 0; i < input.Length; i++)
             {
-                var partString = input.Substring(input.Length / 2 - i, input.Length / 2 + i);
-                if (JudgeLeftRightString(partString) && partString.Length > 1)
+                var partCharArray = input.Substring(0, i).ToCharArray();
+                Array.Reverse(partCharArray);
+                if (JudgeLeftRightString(string.Concat(input, new string(partCharArray))))
                 {
-                    length -= 2;
+                    return string.Concat(input, new string(partCharArray));
                 }
             }
-            var result = input;
-            var getPartArray = result.Substring(0, length).ToCharArray();
-            Array.Reverse(getPartArray);
-            result = string.Concat(result, new string(getPartArray));
-            return result;
+            return input;
         }
-
         private static bool JudgeLeftRightString(string input)
         {
             var leftString = input.Substring(0, input.Length / 2);
