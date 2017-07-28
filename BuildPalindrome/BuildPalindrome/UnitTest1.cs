@@ -10,20 +10,19 @@ namespace BuildPalindrome
         [TestMethod]
         public void Input_abc_Should_Be_abcba()
         {
-            var kata = new Kata();
-            var input = "abc";
-            var actual = kata.BuildPalindrome(input);
-            var expected = "abcba";
-            Assert.AreEqual(expected, actual);
+            BuildPalindromeResult("abcba", "abc");
         }
 
         [TestMethod]
         public void Input_abcd_Should_Be_abcdcba()
         {
+            BuildPalindromeResult("abcdcba", "abcd");
+        }
+
+        private static void BuildPalindromeResult(string expected,string input)
+        {
             var kata = new Kata();
-            var input = "abcd";
             var actual = kata.BuildPalindrome(input);
-            var expected = "abcdcba";
             Assert.AreEqual(expected, actual);
         }
     }
@@ -36,7 +35,7 @@ namespace BuildPalindrome
             var chararray = input.ToCharArray();
             Array.Reverse(chararray);
             var temp = new string(chararray);
-                result += temp.Substring(1, input.Length - 1);
+            result += temp.Substring(1, input.Length - 1);
             return result;
         }
     }
