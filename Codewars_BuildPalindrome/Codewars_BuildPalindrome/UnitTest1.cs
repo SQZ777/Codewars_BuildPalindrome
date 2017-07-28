@@ -21,7 +21,11 @@ namespace Codewars_BuildPalindrome
     {
         public string BuildPalindrome(string input)
         {
-            throw new NotImplementedException();
+            var result = input;
+            var inputCharArray = input.ToCharArray();
+            Array.Reverse(inputCharArray);
+            var halfStrgin = new string(inputCharArray).Substring(1, input.Length / 2 +1);
+            return result + halfStrgin;
         }
     }
 }
