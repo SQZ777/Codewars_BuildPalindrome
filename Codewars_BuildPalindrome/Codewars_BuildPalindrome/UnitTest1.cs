@@ -24,6 +24,12 @@ namespace Codewars_BuildPalindrome
             BuildPalindromeResult("ababa", "ababa");
         }
 
+        [TestMethod]
+        public void Input_abababa_Should_Be_ababab()
+        {
+            BuildPalindromeResult("abababa", "ababab");
+        }
+
         private static void BuildPalindromeResult(string expected, string input)
         {
             var kata = new Kata();
