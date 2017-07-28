@@ -65,8 +65,8 @@ namespace Codewars_BuildPalindrome
             var length = input.Length - 1;
             for (int i = 0; i < input.Length / 2; i += 2)
             {
-                var temp = input.Substring(input.Length / 2 - i, input.Length / 2 + i);
-                if (JudgeLeftRightString(temp) && temp.Length > 1)
+                var partString = input.Substring(input.Length / 2 - i, input.Length / 2 + i);
+                if (JudgeLeftRightString(partString) && partString.Length > 1)
                 {
                     length -= 2;
                 }
