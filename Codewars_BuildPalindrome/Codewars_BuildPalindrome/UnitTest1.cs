@@ -30,6 +30,12 @@ namespace Codewars_BuildPalindrome
             BuildPalindromeResult("abababa", "ababab");
         }
 
+        [TestMethod]
+        public void Input_accbab_Should_Be_accbabcca()
+        {
+            BuildPalindromeResult("accbabcca", "accbab");
+        }
+
         private static void BuildPalindromeResult(string expected, string input)
         {
             var kata = new Kata();
@@ -42,25 +48,43 @@ namespace Codewars_BuildPalindrome
     {
         public string BuildPalindrome(string input)
         {
+            if (JudgeLeftRightString(input))
+                return input;
+            var length = input.Length - 1;
+            for (int i = 0; i < input.Length / 2; i += 2)
+            {
+                var temp = input.Substring(input.Length / 2 - i, input.Length / 2 + i);
+                if (JudgeLeftRightString(temp) && temp.Length > 1)
+                {
+                    length = input.Length - 1;
+                    length = length - i - 2;
+                }
+            }
+            var result = input;
+            var x = result.Substring(0, length).ToCharArray();
+            Array.Reverse(x);
+            result = string.Concat(result, new string(x));
+
+            return result;
+        }
+
+        private static bool JudgeLeftRightString(string input)
+        {
             var leftString = input.Substring(0, input.Length / 2);
+
             var rightString = input.Length % 2 == 0
                 ? input.Substring(input.Length / 2, input.Length / 2)
                 : input.Substring(input.Length / 2 + 1, input.Length / 2);
+
             var rightCharArray = rightString.ToCharArray();
+
             Array.Reverse(rightCharArray);
             rightString = new string(rightCharArray);
             if (leftString.Equals(rightString))
             {
-                return input;
+                return true;
             }
-
-            var result = input;
-            var inputCharArray = input.ToCharArray();
-            Array.Reverse(inputCharArray);
-            var halfStrgin = new string(inputCharArray).Substring(1, input.Length / 2 + 1);
-            return result + halfStrgin;
+            return false;
         }
-
-
     }
 }
