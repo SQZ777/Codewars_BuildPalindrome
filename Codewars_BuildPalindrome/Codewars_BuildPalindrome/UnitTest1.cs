@@ -36,6 +36,12 @@ namespace Codewars_BuildPalindrome
             BuildPalindromeResult("accbabcca", "accbab");
         }
 
+        [TestMethod]
+        public void Input_acbca_Should_Be_acbca()
+        {
+            BuildPalindromeResult("acbca", "acbca");
+        }
+
         private static void BuildPalindromeResult(string expected, string input)
         {
             var kata = new Kata();
