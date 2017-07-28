@@ -19,7 +19,14 @@ namespace BuildPalindrome
             BuildPalindromeResult("abcdcba", "abcd");
         }
 
-        private static void BuildPalindromeResult(string expected,string input)
+        [TestMethod]
+        public void Input_abcdc_Should_Be_abcdcba()
+        {
+            BuildPalindromeResult("abcdcba", "abcdc");
+
+        }
+
+        private static void BuildPalindromeResult(string expected, string input)
         {
             var kata = new Kata();
             var actual = kata.BuildPalindrome(input);
@@ -36,6 +43,8 @@ namespace BuildPalindrome
             Array.Reverse(chararray);
             var temp = new string(chararray);
             result += temp.Substring(1, input.Length - 1);
+            
+
             return result;
         }
     }
