@@ -72,9 +72,7 @@ namespace Codewars_BuildPalindrome
                 var partCharArray = input.Substring(0, i).ToCharArray();
                 Array.Reverse(partCharArray);
                 if (JudgeLeftRightString(string.Concat(input, new string(partCharArray))))
-                {
                     return string.Concat(input, new string(partCharArray));
-                }
             }
             return input;
         }
@@ -83,9 +81,7 @@ namespace Codewars_BuildPalindrome
             var reverseCharArray = input.ToCharArray();
             Array.Reverse(reverseCharArray);
             if (new string(reverseCharArray).Equals(input))
-            {
                 return true;
-            }
             return false;
         }
     }
