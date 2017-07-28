@@ -16,6 +16,16 @@ namespace BuildPalindrome
             var expected = "abcba";
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Input_abcd_Should_Be_abcdcba()
+        {
+            var kata = new Kata();
+            var input = "abcd";
+            var actual = kata.BuildPalindrome(input);
+            var expected = "abcdcba";
+            Assert.AreEqual(expected, actual);
+        }
     }
 
     public class Kata
@@ -24,12 +34,9 @@ namespace BuildPalindrome
         {
             var result = input;
             var chararray = input.ToCharArray();
-            if (input.Length % 2 == 1)
-            {
-                Array.Reverse(chararray);
-                var temp = new string(chararray);
+            Array.Reverse(chararray);
+            var temp = new string(chararray);
                 result += temp.Substring(1, input.Length - 1);
-            }
             return result;
         }
     }
