@@ -20,6 +20,11 @@ namespace Codewars_OnesAndZeros
             BinaryArrayToNumberResult(8, new[] { 1, 0, 0, 0 });
         }
 
+        [TestMethod]
+        public void Input_1001_Should_Be_9()
+        {
+            BinaryArrayToNumberResult(9, new[] { 1, 0, 0, 1 });
+        }
         private static void BinaryArrayToNumberResult(int expected, int[] input)
         {
             var kata = new Kata();
