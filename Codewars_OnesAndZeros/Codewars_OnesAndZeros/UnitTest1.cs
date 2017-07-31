@@ -10,10 +10,20 @@ namespace Codewars_OnesAndZeros
         public void Input_0_Should_Be_0()
         {
             var kata = new Kata();
-            var input = new[] {0};
+            var input = new[] { 0 };
             var actual = kata.BinaryArrayToNumber(input);
             var expected = 0;
-            Assert.AreEqual(expected,actual);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Input_1_Should_Be_2()
+        {
+            var kata = new Kata();
+            var input = new[] { 1 };
+            var actual = kata.BinaryArrayToNumber(input);
+            var expected = 2;
+            Assert.AreEqual(expected, actual);
         }
     }
 
