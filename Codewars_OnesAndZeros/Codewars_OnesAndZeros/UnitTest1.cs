@@ -21,7 +21,7 @@ namespace Codewars_OnesAndZeros
     {
         public int BinaryArrayToNumber(int[] input)
         {
-            throw new NotImplementedException();
+            return 0;
         }
     }
 }
