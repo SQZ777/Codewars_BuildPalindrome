@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Codewars_OnesAndZeros
@@ -31,7 +32,8 @@ namespace Codewars_OnesAndZeros
     {
         public int BinaryArrayToNumber(int[] input)
         {
-            return 0;
+            var result = input.Sum(x => x * 2);
+            return result;
         }
     }
 }
