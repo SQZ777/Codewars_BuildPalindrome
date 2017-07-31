@@ -7,22 +7,17 @@ namespace Codewars_OnesAndZeros
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
-        public void Input_0_Should_Be_0()
-        {
-            BinaryArrayToNumberResult(0, new[] { 0 });
-        }
-
-        [TestMethod]
-        public void Input_1_Should_Be_1()
-        {
-            BinaryArrayToNumberResult(1, new[] { 1 });
-        }
 
         [TestMethod]
         public void Input_10_Should_Be_2()
         {
-            BinaryArrayToNumberResult(2, new[] { 1,2 });
+            BinaryArrayToNumberResult(2, new[] { 1, 0 });
+        }
+
+        [TestMethod]
+        public void Input_1000_Should_Be_8()
+        {
+            BinaryArrayToNumberResult(8, new[] { 1, 0, 0, 0 });
         }
 
         private static void BinaryArrayToNumberResult(int expected, int[] input)
@@ -37,23 +32,13 @@ namespace Codewars_OnesAndZeros
     {
         public int BinaryArrayToNumber(int[] input)
         {
-            var result = 0;
-
-            for (int time = input.Length - 1; time >= 0; time--)
+            var result = 0d;
+            Array.Reverse(input);
+            for (int time = input.Length - 1; time > 0; time--)
             {
-                result += PowerSquare(input[time], time);
+                result += input[time] * Math.Pow(2, time);
             }
-            return result;
-        }
-
-        private static int PowerSquare(int input, int squareTime)
-        {
-            if (squareTime == 0)
-            {
-                return input;
-            }
-            squareTime--;
-            return PowerSquare(input * 2, squareTime);
+            return (int)result;
         }
     }
 }
