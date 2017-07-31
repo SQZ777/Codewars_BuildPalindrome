@@ -39,7 +39,7 @@ namespace Codewars_OnesAndZeros
         {
             var result = 0d;
             Array.Reverse(input);
-            for (int time = input.Length - 1; time > 0; time--)
+            for (int time = input.Length - 1; time >= 0; time--)
             {
                 result += input[time] * Math.Pow(2, time);
             }
