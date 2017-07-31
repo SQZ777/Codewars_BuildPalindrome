@@ -19,6 +19,12 @@ namespace Codewars_OnesAndZeros
             BinaryArrayToNumberResult(1, new[] { 1 });
         }
 
+        [TestMethod]
+        public void Input_10_Should_Be_2()
+        {
+            BinaryArrayToNumberResult(2, new[] { 1,2 });
+        }
+
         private static void BinaryArrayToNumberResult(int expected, int[] input)
         {
             var kata = new Kata();
@@ -33,7 +39,7 @@ namespace Codewars_OnesAndZeros
         {
             var result = 0;
 
-            for (int time = input.Length - 1 ; time >= 0; time--)
+            for (int time = input.Length - 1; time >= 0; time--)
             {
                 result += PowerSquare(input[time], time);
             }
@@ -42,7 +48,12 @@ namespace Codewars_OnesAndZeros
 
         private static int PowerSquare(int input, int squareTime)
         {
-            return input;
+            if (squareTime == 0)
+            {
+                return input;
+            }
+            squareTime--;
+            return PowerSquare(input * 2, squareTime);
         }
     }
 }
