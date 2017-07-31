@@ -35,14 +35,12 @@ namespace Codewars_OnesAndZeros
 
     public class Kata
     {
-        public int BinaryArrayToNumber(int[] input)
+        public int BinaryArrayToNumber(int[] BinaryArray)
         {
             var result = 0d;
-            Array.Reverse(input);
-            for (int time = input.Length - 1; time >= 0; time--)
-            {
-                result += input[time] * Math.Pow(2, time);
-            }
+            Array.Reverse(BinaryArray);
+            for (int time = BinaryArray.Length - 1; time >= 0; time--)
+                result += BinaryArray[time] * Math.Pow(2, time);
             return (int)result;
         }
     }
